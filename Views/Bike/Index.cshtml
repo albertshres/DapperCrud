@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DapperCrudYtb.Models.Bike>
+
+@{
+    ViewData["Title"] = "Bike List";
+}
+
+<h1>Bike List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Bike</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BName)</th>
+            <th>@Html.DisplayNameFor(model => model.Manufacture)</th>
+            <th>@Html.DisplayNameFor(model => model.Color)</th>
+            <th>@Html.DisplayNameFor(model => model.CC)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.BName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Manufacture)</td>
+                <td>@Html.DisplayFor(modelItem => item.Color)</td>
+                <td>@Html.DisplayFor(modelItem => item.CC)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BikeId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.BikeId" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.BikeId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
